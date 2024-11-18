@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/fleet-care-db
+    username: fleetcare
+    password: fleetcare
+    driver-class-name: org.postgresql.Driver
+  sql:
+    init:
+      schema-locations: classpath:schema.sql
+      mode: always

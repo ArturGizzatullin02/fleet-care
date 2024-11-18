@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>View Repairs</title>
+</head>
+<body>
+<h1>Repairs</h1>
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Vehicle ID</th>
+        <th>Master ID</th>
+        <th>Request ID</th>
+        <th>Status</th>
+        <th>Cost</th>
+    </tr>
+    <tr th:each="repair : ${repairs}">
+        <td th:text="${repair.id}"></td>
+        <td th:text="${repair.vehicleId}"></td>
+        <td th:text="${repair.masterId}"></td>
+        <td th:text="${repair.requestId}"></td>
+        <td th:text="${repair.status}"></td>
+        <td th:text="${repair.cost}"></td>
+    </tr>
+</table>
+<a href="/">Back to Home</a>
+</body>
+</html>
