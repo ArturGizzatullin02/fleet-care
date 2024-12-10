@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Удаление сущности</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f9;
+        }
+        .container {
+            text-align: center;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .title {
+            font-size: 24px;
+            margin-bottom: 20px;
+            font-weight: bold;
+            color: #333;
+        }
+        .button {
+            display: block;
+            width: 200px;
+            margin: 10px auto;
+            padding: 10px;
+            font-size: 16px;
+            color: #fff;
+            background: #dc3545;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+        }
+        .button:hover {
+            background: #b02a37;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="title">Удалить сущность</div>
+    <form th:action="@{/delete/entity}" method="post">
+        <input type="hidden" name="_method" value="DELETE" />
+        <!-- Поле для выбора сущности -->
+        <label for="entityType">Выберите сущность:</label>
+        <select id="entityType" name="entityType" required>
+            <option value="" disabled selected>Выберите...</option>
+            <option value="vehicle">Автомобиль</option>
+            <option value="repair">Ремонт</option>
+            <option value="sparePart">Запчасть</option>
+            <option value="user">Пользователь</option>
+            <option value="repairRequest">Запрос на ремонт</option>
+        </select>
+        <br><br>
+        <!-- Поле для ID сущности -->
+        <label for="entityId">Введите ID:</label>
+        <input type="number" id="entityId" name="entityId" required>
+        <br><br>
+        <!-- Скрытое поле для имитации DELETE -->
+        <input type="hidden" name="_method" value="DELETE" />
+        <!-- Кнопка отправки -->
+        <button type="submit" class="button">Удалить</button>
+    </form>
+    <a href="/" class="button" style="background-color: #007bff;">Вернуться</a>
+</div>
+</body>
+</html>

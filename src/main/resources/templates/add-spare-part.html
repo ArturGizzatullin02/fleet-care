@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8"> <!-- Убедитесь, что кодировка UTF-8 установлена -->
-    <title>Учет автомобилей и их ремонта</title>
+    <meta charset="UTF-8">
+    <title>Добавить автомобиль</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -28,7 +28,7 @@
         }
         .button {
             display: block;
-            width: 150px;
+            width: 200px;
             margin: 10px auto;
             padding: 10px;
             font-size: 16px;
@@ -47,11 +47,20 @@
 </head>
 <body>
 <div class="container">
-    <div class="title">Учет автомобилей и их ремонта</div>
-    <a th:href="@{/view}" class="button">Просмотреть</a>
-    <a href="/add" class="button">Добавить</a>
-    <a href="/delete/entity" class="button">Удалить</a>
-    <a href="/update" class="button">Изменить</a>
+    <div class="title">Добавить новую запчасть</div>
+    <form th:action="@{/add/spare-part}" method="post">
+        <label for="name">Название запчасти:</label>
+        <input type="text" id="name" name="name">
+
+        <label for="stockQuantity">Остаток на складе:</label>
+        <input type="number" id="stockQuantity" name="stockQuantity">
+
+        <label for="price">Стоимость:</label>
+        <input type="number" id="price" name="price">
+
+        <button type="submit" class="button">Сохранить</button>
+    </form>
+    <a href="/add" class="button">Вернуться</a>
 </div>
 </body>
 </html>

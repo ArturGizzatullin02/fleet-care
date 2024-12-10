@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавить автомобиль</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f9;
+        }
+        .container {
+            text-align: center;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .title {
+            font-size: 24px;
+            margin-bottom: 20px;
+            font-weight: bold;
+            color: #333;
+        }
+        .button {
+            display: block;
+            width: 200px;
+            margin: 10px auto;
+            padding: 10px;
+            font-size: 16px;
+            color: #fff;
+            background: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+        }
+        .button:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="title">Обновить автомобиль</div>
+    <form th:action="@{/update/vehicle}" method="post">
+        <input type="hidden" name="_method" value="PUT"/> <!-- Скрытое поле для PUT -->
+
+        <label for="id">ID:</label>
+        <input type="number" id="id" name="id">
+
+        <label for="type">Тип автомобиля:</label>
+        <input type="hidden" id="type" name="type">
+
+        <label for="vehicleTypeId">ID типа автомобиля:</label>
+        <input type="number" id="vehicleTypeId" name="type.id" required>
+
+        <label for="vehicleTypeName">Название типа:</label>
+        <input type="text" id="vehicleTypeName" name="type.name" required>
+
+        <label for="maintenanceInterval">Интервал обслуживания:</label>
+        <input type="number" id="maintenanceInterval" name="type.maintenanceInterval" required>
+
+
+        <label for="mileage">Пробег:</label>
+        <input type="number" id="mileage" name="mileage" required>
+
+        <label for="mileage">Статус:</label>
+        <input type="text" id="vehicleStatus" name="vehicleStatus" required>
+
+        <label for="mileage">Гос номер:</label>
+        <input type="text" id="licensePlate" name="licensePlate" required>
+
+        <button type="submit" class="button">Сохранить</button>
+    </form>
+    <a href="/update" class="button">Вернуться</a>
+</div>
+</body>
+</html>

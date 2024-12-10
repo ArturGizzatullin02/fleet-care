@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Просмотр запросов на ремонт</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+        }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .title {
+            font-size: 24px;
+            margin-bottom: 20px;
+            font-weight: bold;
+            color: #333;
+            text-align: center;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .button {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+            display: inline-block;
+        }
+        .button:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="title">Список ремонтов</div>
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Номер автомобиля</th>
+            <th>Дата начала</th>
+            <th>Дата окончания</th>
+            <th>ID мастера</th>
+            <th>ID запроса</th>
+            <th>Тип ремонта</th>
+            <th>Статус</th>
+            <th>Стоимость</th>
+            <th>Запчасти</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="repair : ${repairs}">
+            <td th:text="${repair.id}"></td>
+            <td th:text="${repair.vehicle.getLicensePlate()}"></td>
+            <td th:text="${repair.startDate}"></td>
+            <td th:text="${repair.endDate}"></td>
+            <td th:text="${repair.master.getId()}"></td>
+            <td th:text="${repair.request.getId()}"></td>
+            <td th:text="${repair.type}"></td>
+            <td th:text="${repair.status}"></td>
+            <td th:text="${repair.cost}"></td>
+            <td>
+                <!-- Вложенная таблица для запчастей -->
+                <table class="nested-table">
+                    <thead>
+                    <tr>
+                        <th>ID запчасти</th>
+                        <th>Название</th>
+                        <th>Количество на складе</th>
+                        <th>Цена</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <!-- Итерация по списку запчастей для текущего ремонта -->
+                    <tr th:each="sparePart : ${repair.spareParts}">
+                        <td th:text="${sparePart.id}"></td>
+                        <td th:text="${sparePart.name}"></td>
+                        <td th:text="${sparePart.stockQuantity}"></td>
+                        <td th:text="${sparePart.price}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <a href="/view" class="button">Назад</a>
+</div>
+</body>
+</html>

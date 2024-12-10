@@ -4,6 +4,11 @@ spring:
     username: fleetcare
     password: fleetcare
     driver-class-name: org.postgresql.Driver
+  thymeleaf:
+    enabled: true
+    prefix: classpath:/templates/
+    suffix: .html
+
   sql:
     init:
       schema-locations: classpath:schema.sql

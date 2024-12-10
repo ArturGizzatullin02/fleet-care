@@ -44,7 +44,7 @@ CREATE TABLE IF NOT EXISTS repairs (
     repair_cost DECIMAL(10,2) NOT NULL,
 
     CONSTRAINT fk_vehicle_id FOREIGN KEY (vehicle_id) REFERENCES vehicles(id) ON DELETE CASCADE,
-    CONSTRAINT fk_master_id FOREIGN KEY (master_id) REFERENCES repair_requests(id) ON DELETE SET NULL,
+    CONSTRAINT fk_master_id FOREIGN KEY (master_id) REFERENCES users(id) ON DELETE SET NULL,
     CONSTRAINT fk_request_id FOREIGN KEY (request_id) REFERENCES repair_requests(id) ON DELETE SET NULL
 );
 

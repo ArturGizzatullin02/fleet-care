@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8"> <!-- Убедитесь, что кодировка UTF-8 установлена -->
-    <title>Учет автомобилей и их ремонта</title>
+    <meta charset="UTF-8">
+    <title>Выбор просмотра</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -28,7 +28,7 @@
         }
         .button {
             display: block;
-            width: 150px;
+            width: 200px;
             margin: 10px auto;
             padding: 10px;
             font-size: 16px;
@@ -47,11 +47,14 @@
 </head>
 <body>
 <div class="container">
-    <div class="title">Учет автомобилей и их ремонта</div>
-    <a th:href="@{/view}" class="button">Просмотреть</a>
-    <a href="/add" class="button">Добавить</a>
-    <a href="/delete/entity" class="button">Удалить</a>
-    <a href="/update" class="button">Изменить</a>
+    <div class="title">Выберите, что хотите просмотреть</div>
+    <a href="/view/vehicles" class="button">Автомобили</a>
+    <a href="/view/users" class="button">Пользователи</a>
+    <a href="/view/repair-requests" class="button">Запросы на ремонт</a>
+    <a href="/view/spare-parts" class="button">Запчасти</a>
+    <a href="/view/repairs" class="button">Ремонты</a>
+    <a href="/" class="button">Вернуться на главную</a>
+</div>
 </div>
 </body>
 </html>
